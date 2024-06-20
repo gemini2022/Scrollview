@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'lib-scrollview',
+  selector: 'scrollview',
   standalone: true,
   imports: [],
-  template: `
-    <p>
-      scrollview works!
-    </p>
-  `,
-  styles: ``
+  templateUrl: './scrollview.component.html',
+  styleUrl: './scrollview.component.scss'
 })
 export class ScrollviewComponent {
 
