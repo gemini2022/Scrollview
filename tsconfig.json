@@ -14,6 +14,11 @@
     "declaration": false,
     "experimentalDecorators": true,
     "moduleResolution": "bundler",
+    "paths": {
+      "scrollview": [
+        "./dist/scrollview"
+      ]
+    },
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
