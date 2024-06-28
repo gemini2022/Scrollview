@@ -1,1 +1,103 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    /* ===================== (DIMENSIONS) ===================== */
+    
+    /* Scrollview */
+    --scrollview-width: 300px;
+    --scrollview-height: 300px;
+
+
+    /* Scrollbar */
+    --scrollbar-width: 15px;
+
+
+    /* Scrollbar Track */
+    --scrollbar-track-border-width: 1px;
+
+
+    /* Scrollbar Thumb */
+    --scrollbar-thumb-border-width: 1px;
+
+
+    /* Scrollbar Button */
+    --scrollbar-button-border-width: 0;
+    --scrollbar-button-icon-font-size: 19px;
+    --scrollbar-button-icon-left: arrow_left;
+    --scrollbar-button-icon-right: arrow_right;
+    --scrollbar-button-icon-top: arrow_drop_up;
+    --scrollbar-button-icon-bottom: arrow_drop_down;
+
+
+
+
+
+    /* ===================== (COLORS) ===================== */
+
+    /* Scrollview */
+    --double-overflow-corner-color: #051828;
+
+
+    /* Scrollbar Track */
+    --scrollbar-track-border-color: linear-gradient(#0b1e2f, #06101a);
+    --scrollbar-track-background-color: linear-gradient(#030a10, #081929);
+
+
+    /* Scrollbar Thumb */
+    --scrollbar-thumb-border-color: linear-gradient(#32536e, #28445b);
+    --scrollbar-thumb-background-color: linear-gradient(#29445b, #1b2e3d);
+
+
+    /* Scrollbar Button */
+    --scrollbar-button-icon-color: #075a9e;
+    // --scrollbar-button-top-border-color: #153752;
+    // --scrollbar-button-left-border-color: #153752;
+    // --scrollbar-button-right-border-color: #09263c;
+    --scrollbar-button-background-color: linear-gradient(#0e3451, #092235);
+
+    --scrollbar-button-border-color: linear-gradient(#153752 14px, #09263c 1px);
+
+
+
+
+
+    /* ===================== (HOVER COLORS) ===================== */
+
+    /* Scrollbar Thumb */
+    --scrollbar-thumb-border-hover-color: linear-gradient(#385e7c, #2e4f69);
+    --scrollbar-thumb-background-hover-color: linear-gradient(#2f4f69, #21394b);
+    
+
+    
+    /* Scrollbar Button */
+    --scrollbar-button-arrow-hover-color: #0865b2;
+    --scrollbar-button-top-border-hover-color: #194262;
+    --scrollbar-button-left-border-hover-color: #194262;
+    --scrollbar-button-right-border-hover-color: #0c314e;
+    --scrollbar-button-background-hover-color: linear-gradient(#113f62, #0c2d46);
+
+
+
+
+
+    /* ===================== (ACTIVE COLORS) ===================== */
+
+    /* Scrollbar Thumb */
+    --scrollbar-thumb-border-active-color: linear-gradient(#3d6687, #335774);
+    --scrollbar-thumb-background-active-color: linear-gradient(#345674, #264156);
+
+
+    /* Scrollbar Button */
+    --scrollbar-button-arrow-active-color: #0976cf;
+    --scrollbar-button-top-border-active-color: #1c4a6e;
+    --scrollbar-button-left-border-active-color: #1c4a6e;
+    --scrollbar-button-right-border-active-color: #0e3a5b;
+    --scrollbar-button-background-active-color: linear-gradient(#13486f, #0e3654);
+}
+
+
+
+
+body {
+    background-color: #051828;
+    margin-top: 300px;
+    margin-left: 600px;
+}

@@ -1,0 +1,86 @@
+.vertical-thumb-container {
+    left: 1px;
+    z-index: 1;
+    position: absolute;
+    pointer-events: all;
+    box-sizing: border-box;
+    top: var(--thumb-width);
+    width: calc(var(--thumb-width) - 2px);
+    min-height: calc(var(--thumb-width) - 2px);
+    
+    &:hover {
+        .vertical-thumb-border {
+            background: var(--scrollbar-vertical-thumb-border-hover-color);
+        }
+
+        .horizontal-thumb-border {
+            background: var(--scrollbar-thumb-border-hover-color);
+        }
+
+        .vertical-thumb-background {
+            background: var(--scrollbar-vertical-thumb-background-hover-color);
+        }
+
+        .horizontal-thumb-background {
+            background: var(--scrollbar-thumb-background-hover-color);
+        }
+    }
+
+
+    &:active {
+        .vertical-thumb-border {
+            background: var(--scrollbar-vertical-thumb-border-active-color);
+        }
+
+        .horizontal-thumb-border {
+            background: var(--scrollbar-thumb-border-active-color);
+        }
+
+        .vertical-thumb-background {
+            background: var(--scrollbar-vertical-thumb-background-active-color);
+        }
+
+        .horizontal-thumb-background {
+            background: var(--scrollbar-thumb-background-active-color);
+        }
+    }
+}
+
+
+
+.horizontal-thumb-container {
+    top: 1px;
+    left: var(--thumb-width);
+    height: calc(var(--thumb-width) - 2px);
+    min-width: calc(var(--thumb-width) - 2px);
+}
+
+
+
+.vertical-thumb-border {
+    height: 100%;
+    box-sizing: border-box;
+    padding: var(--scrollbar-thumb-border-width);
+    background: var(--scrollbar-vertical-thumb-border-color);
+    border-radius: calc((var(--thumb-width) - 1px - 1px) / 2);
+}
+
+
+
+.horizontal-thumb-border {
+    background: var(--scrollbar-thumb-border-color);
+}
+
+
+
+.vertical-thumb-background {
+    height: 100%;
+    border-radius: calc((var(--thumb-width) - 1px - 1px) / 2);
+    background: var(--scrollbar-vertical-thumb-background-color);
+}
+
+
+
+.horizontal-thumb-background {
+    background: var(--scrollbar-thumb-background-color);
+}

@@ -1,0 +1,43 @@
+.scrollview-container {
+    width: var(--scrollview-width);
+    height: var(--scrollview-height);
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.scrollview-content-container {
+    position: relative;
+    width: calc(100% - var(--scrollview-content-width-offset));
+    height: calc(100% - var(--scrollview-content-height-offset));
+}
+
+
+
+.scrollview-vertical-scrollbar-container {
+    top: 0;
+    position: absolute;
+    left: calc(100% - var(--scrollbar-width-value));
+    height: calc(100% - var(--scrollview-double-overflow-offset));
+}
+
+
+
+.scrollview-horizontal-scrollbar-container {
+    left: 0;
+    position: absolute;
+    top: calc(100% - var(--scrollbar-width-value));
+    width: calc(100% - var(--scrollview-double-overflow-offset));
+}
+
+
+
+.double-overflow-corner {
+    width: 15px;
+    height: 15px;
+    background: var(--double-overflow-corner-color);
+    position: absolute;
+    left: calc(100% - 15px);
+    top: calc(100% - 15px);
+}

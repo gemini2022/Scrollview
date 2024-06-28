@@ -1,0 +1,62 @@
+// .scrollbar-button-bottom {
+//     display: flex;
+//     position: relative;
+//     align-items: center;
+//     pointer-events: all;
+//     box-sizing: border-box;
+//     justify-content: center;
+//     width: var(--button-width);
+//     border-left: solid var(--scrollbar-button-left-border-color);
+//     background: var(--scrollbar-vertical-button-background-color);
+//     border-bottom: solid var(--scrollbar-button-top-border-color);
+//     border-right: solid var(--scrollbar-button-right-border-color);
+//     border-width: var(--scrollbar-button-border-width);// don't move
+//     height: calc(var(--button-width) + ((var(--button-width) - 1px - 1px) / 2));
+
+//     &::before {
+//         top: 0;
+//         content: "";
+//         position: absolute;
+//         width: calc(var(--button-width) - 1px - 1px);
+//         height: calc((var(--button-width) - 1px - 1px) / 2);
+//         background: var(--scrollbar-vertical-track-background-color);
+//         border-radius: 0 0 calc((var(--button-width) - 1px - 1px) / 2) calc((var(--button-width) - 1px - 1px) / 2);
+//     }
+
+
+//     &>div:first-child {
+//         width: 100%;
+//         display: flex;
+//         position: absolute;
+//         align-items: center;
+//         justify-content: center;
+//         height: calc(var(--button-width) - 1px);
+//         top: calc((var(--button-width) - 1px - 1px) / 2);
+//     }
+
+//     &:hover:not(.disabled) {
+//         border-left-color: var(--scrollbar-button-left-border-hover-color);
+//         border-bottom-color: var(--scrollbar-button-top-border-hover-color);
+//         background: var(--scrollbar-vertical-button-background-hover-color);
+//         border-right-color: var(--scrollbar-button-right-border-hover-color);
+
+//         &>div:first-child {
+//             .material-symbols-outlined {
+//                 color: var(--scrollbar-button-arrow-hover-color);
+//             }
+//         }
+//     }
+
+//     &:active:not(.disabled) {
+//         border-left-color: var(--scrollbar-button-left-border-active-color);
+//         border-bottom-color: var(--scrollbar-button-top-border-active-color);
+//         background: var(--scrollbar-vertical-button-background-active-color);
+//         border-right-color: var(--scrollbar-button-right-border-active-color);
+
+//         &>div:first-child {
+//             .material-symbols-outlined {
+//                 color: var(--scrollbar-button-arrow-active-color);
+//             }
+//         }
+//     }
+// }

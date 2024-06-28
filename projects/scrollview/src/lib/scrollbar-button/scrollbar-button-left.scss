@@ -1,0 +1,62 @@
+.scrollbar-button-left {
+    display: flex;
+    position: relative;
+    align-items: center;
+    pointer-events: all;
+    box-sizing: border-box;
+    justify-content: center;
+    height: var(--button-width);
+    background: var(--scrollbar-button-background-color);
+    border-left: solid var(--scrollbar-button-top-border-color);
+    border-top: solid var(--scrollbar-button-left-border-color);
+    border-bottom: solid var(--scrollbar-button-right-border-color);
+    border-width: var(--scrollbar-button-border-width);// don't move
+    width: calc(var(--button-width) + ((var(--button-width) - 1px - 1px) / 2));
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: calc(var(--button-width) - 1px);
+        height: calc(var(--button-width) - 1px - 1px);
+        width: calc((var(--button-width) - 1px - 1px) / 2);
+        background: var(--scrollbar-track-background-color);
+        border-radius: calc((var(--button-width) - 1px - 1px) / 2) 0 0 calc((var(--button-width) - 1px - 1px) / 2);
+    }
+
+
+    &>div:first-child {
+        left: 0;
+        height: 100%;
+        display: flex;
+        position: absolute;
+        align-items: center;  
+        justify-content: center;
+        width: calc(var(--button-width) - 1px);
+    }
+
+    &:hover:not(.disabled) {
+        background: var(--scrollbar-button-background-hover-color);
+        border-top-color: var(--scrollbar-button-left-border-hover-color);
+        border-left-color: var(--scrollbar-button-top-border-hover-color);
+        border-bottom-color: var(--scrollbar-button-right-border-hover-color);
+
+        &>div:first-child {
+            .material-symbols-outlined {
+                color: var(--scrollbar-button-arrow-hover-color);
+            }
+        }
+    }
+
+    &:active:not(.disabled) {
+        background: var(--scrollbar-button-background-active-color);
+        border-top-color: var(--scrollbar-button-left-border-active-color);
+        border-left-color: var(--scrollbar-button-top-border-active-color);
+        border-bottom-color: var(--scrollbar-button-right-border-active-color);
+
+        &>div:first-child {
+            .material-symbols-outlined {
+                color: var(--scrollbar-button-arrow-active-color);
+            }
+        }
+    }
+}

@@ -1,0 +1,136 @@
+// .scrollbar-button-top {
+//     display: flex;
+//     position: relative;
+//     align-items: center;
+//     pointer-events: all;
+//     box-sizing: border-box;
+//     justify-content: center;
+//     width: var(--button-width);
+//     border-top: solid var(--scrollbar-button-top-border-color);
+//     border-left: solid var(--scrollbar-button-left-border-color);
+//     background: var(--scrollbar-vertical-button-background-color);
+//     border-right: solid var(--scrollbar-button-right-border-color);
+//     border-width: var(--scrollbar-button-border-width);// don't move
+//     height: calc(var(--button-width) + ((var(--button-width) - 1px - 1px) / 2));
+
+//     &::before {
+//         content: "";
+//         position: absolute;
+//         top: calc(var(--button-width) - 1px);
+//         width: calc(var(--button-width) - 1px - 1px);
+//         height: calc((var(--button-width) - 1px - 1px) / 2);
+//         background: var(--scrollbar-vertical-track-background-color);
+//         border-radius: calc((var(--button-width) - 1px - 1px) / 2) calc((var(--button-width) - 1px - 1px) / 2) 0 0;
+//     }
+
+
+//     &>div:first-child {
+//         top: 0;
+//         width: 100%;
+//         display: flex;
+//         position: absolute;
+//         align-items: center;
+//         justify-content: center;
+//         height: calc(var(--button-width) - 1px);
+//     }
+
+//     &:hover:not(.disabled) {
+//         border-top-color: var(--scrollbar-button-top-border-hover-color);
+//         border-left-color: var(--scrollbar-button-left-border-hover-color);
+//         background: var(--scrollbar-vertical-button-background-hover-color);
+//         border-right-color: var(--scrollbar-button-right-border-hover-color);
+
+//         &>div:first-child {
+//             .material-symbols-outlined {
+//                 color: var(--scrollbar-button-arrow-hover-color);
+//             }
+//         }
+//     }
+
+//     &:active:not(.disabled) {
+//         border-top-color: var(--scrollbar-button-top-border-active-color);
+//         border-left-color: var(--scrollbar-button-left-border-active-color);
+//         background: var(--scrollbar-vertical-button-background-active-color);
+//         border-right-color: var(--scrollbar-button-right-border-active-color);
+
+//         &>div:first-child {
+//             .material-symbols-outlined {
+//                 color: var(--scrollbar-button-arrow-active-color);
+//             }
+//         }
+//     }
+// }
+
+
+
+
+
+.button-top {
+    width: var(--button-width);
+    height: calc(var(--button-width) + ((var(--button-width) - 1px - 1px) / 2));
+    position: relative;
+    pointer-events: all;
+    box-sizing: border-box;
+    padding: var(--border-width);
+    background: var(--scrollbar-vertical-button-border-color);
+
+    &::before {
+        position: absolute;
+        content: "";
+        width: calc(100% - (var(--border-width) * 2));
+        height: calc(100% - var(--border-width));
+        background: var(--scrollbar-vertical-button-background-color);
+    }
+
+    &::after {
+        position: absolute;
+        content: "";
+        left: 1px;
+        top: calc(var(--button-width));
+        width: calc(var(--button-width) - 1px - 1px);
+        height: calc((var(--button-width) - 1px - 1px) / 2);
+        background: var(--scrollbar-vertical-track-background-color);
+        border-radius: calc((var(--button-width) - 1px - 1px) / 2) calc((var(--button-width) - 1px - 1px) / 2) 0 0;
+    }
+
+        &>div:first-child {
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        height: calc(var(--button-width));
+    }
+}
+
+
+
+
+
+.background {
+    height: 100%;
+    background: var(--scrollbar-vertical-button-background-color);
+}
+
+
+
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(var(--button-width) - var(--border-width));
+}
+
+
+
+.concave {
+    left: 1px;
+    position: absolute;
+    top: calc(var(--button-width));
+    width: calc(var(--button-width) - 1px - 1px);
+    height: calc((var(--button-width) - 1px - 1px) / 2);
+    background: var(--scrollbar-vertical-track-background-color);
+    border-radius: calc((var(--button-width) - 1px - 1px) / 2) calc((var(--button-width) - 1px - 1px) / 2) 0 0;
+}

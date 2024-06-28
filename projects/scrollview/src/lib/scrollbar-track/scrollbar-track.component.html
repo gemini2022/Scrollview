@@ -1,0 +1,10 @@
+<div #track class="vertical-track-container" [ngClass]="{'horizontal-track-container': !isVertical}">
+
+    <div class="vertical-track-border" [ngClass]="{'horizontal-track-border': !isVertical}" (mousedown)="onMouseDown($event)">
+        <div class="vertical-track-background" [ngClass]="{'horizontal-track-background': !isVertical}"></div>
+    </div>
+    
+    <div class="vertical-content-container" [ngClass]="{'horizontal-content-container': !isVertical}">
+        <ng-content></ng-content>
+    </div>
+</div>
