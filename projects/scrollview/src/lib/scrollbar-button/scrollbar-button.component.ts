@@ -1,4 +1,4 @@
-import { Component, ElementRef, booleanAttribute, inject, input, output, viewChild } from '@angular/core';
+import { Component, ElementRef, Renderer2, booleanAttribute, inject, input, output, viewChild } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { ScrollbarButtonType } from '../scrollbar-button-type';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,7 @@ import { ButtonIcon } from '../button-icon';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './scrollbar-button.component.html',
-  styleUrls: ['./scrollbar-button.component.scss', './scrollbar-button-top.scss', './scrollbar-button-right.scss', './scrollbar-button-bottom.scss', './scrollbar-button-left.scss']
+  styleUrls: ['./scrollbar-button-top.scss', './scrollbar-button-right.scss', './scrollbar-button-bottom.scss', './scrollbar-button-left.scss']
 })
 export class ScrollbarButtonComponent {
   // Input
@@ -21,11 +21,12 @@ export class ScrollbarButtonComponent {
 
   // Private
   protected icon!: string;
-  private isVertical!: boolean;
+  protected isVertical!: boolean;
   private borderRadius!: number;
   protected borderWidth!: string;
   protected isDisabled!: boolean;
   protected iconFontSize!: string;
+  private renderer = inject(Renderer2);
   protected buttonType!: ScrollbarButtonType;
   protected buttonPressListener!: Subscription;
   private scrollbar = inject(ScrollbarComponent);
@@ -97,23 +98,24 @@ export class ScrollbarButtonComponent {
 
   private setBorderWidth(): void {
     this.scrollbar.buttonBorderWidthAssignedEvent.subscribe((borderWidth: string) => {
-      if(borderWidth === '0' || borderWidth.length === 0) borderWidth = '0px';
-      this.button()?.nativeElement.style.setProperty('--border-width', borderWidth);
+      this.renderer.setStyle(this.button()?.nativeElement, 'borderWidth', borderWidth);
+      this.button()?.nativeElement.style.setProperty('--border-top-width', borderWidth.length === 0 ? '0px' : this.button()?.nativeElement.style.borderTopWidth!);
+      this.button()?.nativeElement.style.setProperty('--border-left-width', borderWidth.length === 0 ? '0px' : this.button()?.nativeElement.style.borderLeftWidth!);
+      this.button()?.nativeElement.style.setProperty('--border-right-width', borderWidth.length === 0 ? '0px' : this.button()?.nativeElement.style.borderRightWidth!);
     })
   }
 
 
 
   protected onMouseDown(): void {
-    // if (!this.isDisabled) {
-    //   this.pressedEvent.emit(this.buttonType === ScrollbarButtonType.Top || this.buttonType === ScrollbarButtonType.Left ? -1 : 1);
+    
+    if (!this.isDisabled) {
+      this.pressedEvent.emit(this.buttonType === ScrollbarButtonType.Top || this.buttonType === ScrollbarButtonType.Left ? -1 : 1);
 
-    //   this.buttonPressListener = timer(500, 40).subscribe(() => {
-    //     this.pressedEvent.emit(this.buttonType === ScrollbarButtonType.Top || this.buttonType === ScrollbarButtonType.Left ? -1 : 1);
-    //   });
-    // }
-
-    console.log('hello')
+      this.buttonPressListener = timer(500, 40).subscribe(() => {
+        this.pressedEvent.emit(this.buttonType === ScrollbarButtonType.Top || this.buttonType === ScrollbarButtonType.Left ? -1 : 1);
+      });
+    }
   }
 
 

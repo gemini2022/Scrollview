@@ -19,7 +19,7 @@
 
 
     /* Scrollbar Button */
-    --scrollbar-button-border-width: 0;
+    --scrollbar-button-border-width: 1px;
     --scrollbar-button-icon-font-size: 19px;
     --scrollbar-button-icon-left: arrow_left;
     --scrollbar-button-icon-right: arrow_right;
@@ -48,11 +48,7 @@
 
     /* Scrollbar Button */
     --scrollbar-button-icon-color: #075a9e;
-    // --scrollbar-button-top-border-color: #153752;
-    // --scrollbar-button-left-border-color: #153752;
-    // --scrollbar-button-right-border-color: #09263c;
     --scrollbar-button-background-color: linear-gradient(#0e3451, #092235);
-
     --scrollbar-button-border-color: linear-gradient(#153752 14px, #09263c 1px);
 
 
@@ -68,11 +64,9 @@
 
     
     /* Scrollbar Button */
-    --scrollbar-button-arrow-hover-color: #0865b2;
-    --scrollbar-button-top-border-hover-color: #194262;
-    --scrollbar-button-left-border-hover-color: #194262;
-    --scrollbar-button-right-border-hover-color: #0c314e;
+    --scrollbar-button-icon-hover-color: #0865b2;
     --scrollbar-button-background-hover-color: linear-gradient(#113f62, #0c2d46);
+    --scrollbar-button-border-hover-color: linear-gradient(#194262 14px, #0c314e 1px);
 
 
 
@@ -86,11 +80,20 @@
 
 
     /* Scrollbar Button */
-    --scrollbar-button-arrow-active-color: #0976cf;
-    --scrollbar-button-top-border-active-color: #1c4a6e;
-    --scrollbar-button-left-border-active-color: #1c4a6e;
-    --scrollbar-button-right-border-active-color: #0e3a5b;
+    --scrollbar-button-icon-active-color: #0976cf;
     --scrollbar-button-background-active-color: linear-gradient(#13486f, #0e3654);
+    --scrollbar-button-border-active-color: linear-gradient(#1c4a6e 14px, #0e3a5b 1px);
+
+
+
+
+
+    /* ===================== (DISABLED COLORS) ===================== */
+
+    /* Scrollbar Button */
+    --scrollbar-button-icon-disabled-color: #063963;
+    --scrollbar-button-background-disabled-color: linear-gradient(#0a263c, #071d2f);
+    --scrollbar-button-border-disabled-color: linear-gradient(#0d283d 14px, #071f32 1px);
 }
 
 
@@ -98,6 +101,4 @@
 
 body {
     background-color: #051828;
-    margin-top: 300px;
-    margin-left: 600px;
 }

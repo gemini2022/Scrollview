@@ -56,13 +56,18 @@ export class ScrollviewUtility {
             '--scrollbar-button-background-color',
             '--scrollbar-thumb-border-hover-color',
             '--scrollbar-thumb-border-active-color',
+            '--scrollbar-button-border-hover-color',
+            '--scrollbar-button-border-active-color',
             '--scrollbar-thumb-background-hover-color',
+            '--scrollbar-button-border-disabled-color',
             '--scrollbar-button-background-hover-color',
             '--scrollbar-thumb-background-active-color',
-            '--scrollbar-button-background-active-color'
+            '--scrollbar-button-background-active-color',
+            '--scrollbar-button-background-disabled-color'
         ];
     
         colors.forEach(color => {
+            
             ScrollviewUtility.updateVerticalColor(color, color.replace('--scrollbar-', '--scrollbar-vertical-'));
         });
     }

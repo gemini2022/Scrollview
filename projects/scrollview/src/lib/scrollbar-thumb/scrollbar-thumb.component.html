@@ -1,4 +1,4 @@
-<div #thumb ondragstart="return false;" class="vertical-thumb-container" [ngClass]="{'horizontal-thumb-container': !isVertical}">
+<div #thumb ondragstart="return false;" class="vertical-thumb-container" [ngClass]="{'horizontal-thumb-container': !isVertical, 'active': active}">
     <div class="vertical-thumb-border" [ngClass]="{'horizontal-thumb-border': !isVertical}" [ngStyle]="{'padding': borderWidth}">
         <div class="vertical-thumb-background" [ngClass]="{'horizontal-thumb-background': !isVertical}"></div>
     </div>

@@ -1,136 +1,92 @@
-// .scrollbar-button-top {
-//     display: flex;
-//     position: relative;
-//     align-items: center;
-//     pointer-events: all;
-//     box-sizing: border-box;
-//     justify-content: center;
-//     width: var(--button-width);
-//     border-top: solid var(--scrollbar-button-top-border-color);
-//     border-left: solid var(--scrollbar-button-left-border-color);
-//     background: var(--scrollbar-vertical-button-background-color);
-//     border-right: solid var(--scrollbar-button-right-border-color);
-//     border-width: var(--scrollbar-button-border-width);// don't move
-//     height: calc(var(--button-width) + ((var(--button-width) - 1px - 1px) / 2));
-
-//     &::before {
-//         content: "";
-//         position: absolute;
-//         top: calc(var(--button-width) - 1px);
-//         width: calc(var(--button-width) - 1px - 1px);
-//         height: calc((var(--button-width) - 1px - 1px) / 2);
-//         background: var(--scrollbar-vertical-track-background-color);
-//         border-radius: calc((var(--button-width) - 1px - 1px) / 2) calc((var(--button-width) - 1px - 1px) / 2) 0 0;
-//     }
-
-
-//     &>div:first-child {
-//         top: 0;
-//         width: 100%;
-//         display: flex;
-//         position: absolute;
-//         align-items: center;
-//         justify-content: center;
-//         height: calc(var(--button-width) - 1px);
-//     }
-
-//     &:hover:not(.disabled) {
-//         border-top-color: var(--scrollbar-button-top-border-hover-color);
-//         border-left-color: var(--scrollbar-button-left-border-hover-color);
-//         background: var(--scrollbar-vertical-button-background-hover-color);
-//         border-right-color: var(--scrollbar-button-right-border-hover-color);
-
-//         &>div:first-child {
-//             .material-symbols-outlined {
-//                 color: var(--scrollbar-button-arrow-hover-color);
-//             }
-//         }
-//     }
-
-//     &:active:not(.disabled) {
-//         border-top-color: var(--scrollbar-button-top-border-active-color);
-//         border-left-color: var(--scrollbar-button-left-border-active-color);
-//         background: var(--scrollbar-vertical-button-background-active-color);
-//         border-right-color: var(--scrollbar-button-right-border-active-color);
-
-//         &>div:first-child {
-//             .material-symbols-outlined {
-//                 color: var(--scrollbar-button-arrow-active-color);
-//             }
-//         }
-//     }
-// }
-
-
-
-
+$left-margin: 1px;
+$right-margin: 1px;
 
 .button-top {
-    width: var(--button-width);
-    height: calc(var(--button-width) + ((var(--button-width) - 1px - 1px) / 2));
     position: relative;
     pointer-events: all;
-    box-sizing: border-box;
-    padding: var(--border-width);
+    width: var(--button-width);
     background: var(--scrollbar-vertical-button-border-color);
+    height: calc(var(--button-width) + ((var(--button-width) - $left-margin - $right-margin) / 2));
 
     &::before {
-        position: absolute;
+        bottom: 0;
         content: "";
-        width: calc(100% - (var(--border-width) * 2));
-        height: calc(100% - var(--border-width));
+        position: absolute;
+        top: var(--border-top-width);
+        left: var(--border-left-width);
+        right: var(--border-right-width);
         background: var(--scrollbar-vertical-button-background-color);
     }
 
     &::after {
-        position: absolute;
+        bottom: 0;
         content: "";
-        left: 1px;
+        position: absolute;
+        left: $left-margin;
+        right: $right-margin;
         top: calc(var(--button-width));
-        width: calc(var(--button-width) - 1px - 1px);
-        height: calc((var(--button-width) - 1px - 1px) / 2);
         background: var(--scrollbar-vertical-track-background-color);
-        border-radius: calc((var(--button-width) - 1px - 1px) / 2) calc((var(--button-width) - 1px - 1px) / 2) 0 0;
+        border-radius: calc((var(--button-width) - $left-margin - $right-margin) / 2) calc((var(--button-width) - $left-margin - $right-margin) / 2) 0 0;
     }
 
-        &>div:first-child {
+    &>div:first-child {
         top: 0;
         left: 0;
-        width: 100%;
+        right: 0;
         display: flex;
         position: absolute;
         align-items: center;
         justify-content: center;
         height: calc(var(--button-width));
+
+        .material-symbols-outlined {
+            user-select: none;
+            color: var(--scrollbar-button-icon-color);
+            font-size: var(--scrollbar-button-icon-font-size);
+        }
+    }
+
+    &:hover:not(.vertical-disabled) {
+        background: var(--scrollbar-vertical-button-border-hover-color);
+
+        &::before {
+            background: var(--scrollbar-vertical-button-background-hover-color);
+        }
+
+        &>div:first-child {
+            .material-symbols-outlined {
+                color: var(--scrollbar-button-icon-hover-color);
+            }
+        }
+    }
+
+    &:active:not(.vertical-disabled) {
+        background: var(--scrollbar-vertical-button-border-active-color);
+
+        &::before {
+            background: var(--scrollbar-vertical-button-background-active-color);
+        }
+
+        &>div:first-child {
+            .material-symbols-outlined {
+                color: var(--scrollbar-button-icon-active-color);
+            }
+        }
     }
 }
 
 
 
+.vertical-disabled {
+    background: var(--scrollbar-vertical-button-border-disabled-color);
 
+    &::before {
+        background: var(--scrollbar-vertical-button-background-disabled-color);
+    }
 
-.background {
-    height: 100%;
-    background: var(--scrollbar-vertical-button-background-color);
-}
-
-
-
-.icon-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: calc(var(--button-width) - var(--border-width));
-}
-
-
-
-.concave {
-    left: 1px;
-    position: absolute;
-    top: calc(var(--button-width));
-    width: calc(var(--button-width) - 1px - 1px);
-    height: calc((var(--button-width) - 1px - 1px) / 2);
-    background: var(--scrollbar-vertical-track-background-color);
-    border-radius: calc((var(--button-width) - 1px - 1px) / 2) calc((var(--button-width) - 1px - 1px) / 2) 0 0;
+    &>div:first-child {
+        .material-symbols-outlined {
+            color: var(--scrollbar-button-icon-disabled-color);
+        }
+    }
 }

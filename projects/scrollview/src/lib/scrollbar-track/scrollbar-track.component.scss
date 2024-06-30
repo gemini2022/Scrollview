@@ -19,13 +19,13 @@
     height: 100%;
     box-sizing: border-box;
     padding: var(--track-border-width);
-    // background: var(--scrollbar-vertical-track-border-color);
+    background: var(--scrollbar-vertical-track-border-color);
 }
 
 
 
 .horizontal-track-border {
-    // background: var(--scrollbar-track-border-color);
+    background: var(--scrollbar-track-border-color);
 }
 
 
@@ -33,13 +33,13 @@
 .vertical-track-background {
     width: 100%;
     height: 100%;
-    // background: var(--scrollbar-vertical-track-background-color);
+    background: var(--scrollbar-vertical-track-background-color);
 }
 
 
 
 .horizontal-track-background {
-    // background: var(--scrollbar-track-background-color);
+    background: var(--scrollbar-track-background-color);
 }
 
 

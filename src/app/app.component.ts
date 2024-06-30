@@ -47,4 +47,10 @@ export class AppComponent {
     this.renderer.setStyle(this.square()?.nativeElement, 'top', '0');
     this.renderer.setStyle(this.square()?.nativeElement, 'left', '0');
   }
+
+
+
+  onSetFocus() {
+    this.square()?.nativeElement.focus();
+  }
 }

@@ -1,62 +1,92 @@
-// .scrollbar-button-bottom {
-//     display: flex;
-//     position: relative;
-//     align-items: center;
-//     pointer-events: all;
-//     box-sizing: border-box;
-//     justify-content: center;
-//     width: var(--button-width);
-//     border-left: solid var(--scrollbar-button-left-border-color);
-//     background: var(--scrollbar-vertical-button-background-color);
-//     border-bottom: solid var(--scrollbar-button-top-border-color);
-//     border-right: solid var(--scrollbar-button-right-border-color);
-//     border-width: var(--scrollbar-button-border-width);// don't move
-//     height: calc(var(--button-width) + ((var(--button-width) - 1px - 1px) / 2));
+$left-margin: 1px;
+$right-margin: 1px;
 
-//     &::before {
-//         top: 0;
-//         content: "";
-//         position: absolute;
-//         width: calc(var(--button-width) - 1px - 1px);
-//         height: calc((var(--button-width) - 1px - 1px) / 2);
-//         background: var(--scrollbar-vertical-track-background-color);
-//         border-radius: 0 0 calc((var(--button-width) - 1px - 1px) / 2) calc((var(--button-width) - 1px - 1px) / 2);
-//     }
+.button-bottom {
+    position: relative;
+    pointer-events: all;
+    width: var(--button-width);
+    background: var(--scrollbar-vertical-button-border-color);
+    height: calc(var(--button-width) + ((var(--button-width) - $left-margin - $right-margin) / 2));
+
+    &::before {
+        top: 0;
+        content: "";
+        position: absolute;
+        bottom: var(--border-top-width);
+        left: var(--border-left-width);
+        right: var(--border-right-width);
+        background: var(--scrollbar-vertical-button-background-color);
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: $left-margin;
+        right: $right-margin;
+        top: 0;
+        bottom: calc(var(--button-width));
+        background: var(--scrollbar-vertical-track-background-color);
+        border-radius: 0 0 calc((var(--button-width) - $left-margin - $right-margin) / 2) calc((var(--button-width) - $left-margin - $right-margin) / 2);
+    }
+
+    &>div:first-child {
+        top: calc(((var(--button-width) - $left-margin - $right-margin) / 2));
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+
+        .material-symbols-outlined {
+            user-select: none;
+            color: var(--scrollbar-button-icon-color);
+            font-size: var(--scrollbar-button-icon-font-size);
+        }
+    }
+
+    &:hover:not(.vertical-disabled) {
+        background: var(--scrollbar-vertical-button-border-hover-color);
+
+        &::before {
+            background: var(--scrollbar-vertical-button-background-hover-color);
+        }
+
+        &>div:first-child {
+            .material-symbols-outlined {
+                color: var(--scrollbar-button-icon-hover-color);
+            }
+        }
+    }
+
+    &:active:not(.vertical-disabled) {
+        background: var(--scrollbar-vertical-button-border-active-color);
+
+        &::before {
+            background: var(--scrollbar-vertical-button-background-active-color);
+        }
+
+        &>div:first-child {
+            .material-symbols-outlined {
+                color: var(--scrollbar-button-icon-active-color);
+            }
+        }
+    }
+}
 
 
-//     &>div:first-child {
-//         width: 100%;
-//         display: flex;
-//         position: absolute;
-//         align-items: center;
-//         justify-content: center;
-//         height: calc(var(--button-width) - 1px);
-//         top: calc((var(--button-width) - 1px - 1px) / 2);
-//     }
 
-//     &:hover:not(.disabled) {
-//         border-left-color: var(--scrollbar-button-left-border-hover-color);
-//         border-bottom-color: var(--scrollbar-button-top-border-hover-color);
-//         background: var(--scrollbar-vertical-button-background-hover-color);
-//         border-right-color: var(--scrollbar-button-right-border-hover-color);
+.vertical-disabled {
+    background: var(--scrollbar-vertical-button-border-disabled-color);
 
-//         &>div:first-child {
-//             .material-symbols-outlined {
-//                 color: var(--scrollbar-button-arrow-hover-color);
-//             }
-//         }
-//     }
+    &::before {
+        background: var(--scrollbar-vertical-button-background-disabled-color);
+    }
 
-//     &:active:not(.disabled) {
-//         border-left-color: var(--scrollbar-button-left-border-active-color);
-//         border-bottom-color: var(--scrollbar-button-top-border-active-color);
-//         background: var(--scrollbar-vertical-button-background-active-color);
-//         border-right-color: var(--scrollbar-button-right-border-active-color);
-
-//         &>div:first-child {
-//             .material-symbols-outlined {
-//                 color: var(--scrollbar-button-arrow-active-color);
-//             }
-//         }
-//     }
-// }
+    &>div:first-child {
+        .material-symbols-outlined {
+            color: var(--scrollbar-button-icon-disabled-color);
+        }
+    }
+}

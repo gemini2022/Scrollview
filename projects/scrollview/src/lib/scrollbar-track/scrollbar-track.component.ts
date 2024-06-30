@@ -50,7 +50,8 @@ export class ScrollbarTrackComponent {
 
 
   protected onMouseDown(e: MouseEvent): void {
-    this.thumb()?.setPosition((e.clientY - this.track()?.nativeElement.getBoundingClientRect().top!) - (this.thumb()!.getSize() / 2));
+    this.thumb()?.setPosition((this.isVertical ? e.clientY - this.track()?.nativeElement.getBoundingClientRect().top! : e.clientX - this.track()?.nativeElement.getBoundingClientRect().left!) - (this.thumb()!.getSize() / 2));
+    this.thumb()?.onMouseDown(e);
   }
 
 

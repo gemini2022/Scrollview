@@ -1,29 +1,15 @@
-<!-- <div #button
+<div #button
      (mousedown)="onMouseDown()"
-     [ngStyle]="{'border-width': borderWidth}"
      (mouseup)="buttonPressListener ? buttonPressListener.unsubscribe() : null"
      (mouseleave)="buttonPressListener ? buttonPressListener.unsubscribe() : null"
-     [ngClass]="{'disabled': isDisabled,
-                 'scrollbar-button-top': buttonType === ScrollbarButtonType.Top,
-                 'scrollbar-button-left': buttonType === ScrollbarButtonType.Left,
-                 'scrollbar-button-right': buttonType === ScrollbarButtonType.Right,
-                 'scrollbar-button-bottom': buttonType === ScrollbarButtonType.Bottom}">
+     [ngClass]="{'disabled': !isVertical ? isDisabled : null,
+                 'vertical-disabled': isVertical ? isDisabled : null,
+                 'button-top': buttonType === ScrollbarButtonType.Top,
+                 'button-left': buttonType === ScrollbarButtonType.Left,
+                 'button-right': buttonType === ScrollbarButtonType.Right,
+                 'button-bottom': buttonType === ScrollbarButtonType.Bottom}">
+
     <div>
         <i class="material-symbols-outlined" [ngStyle]="{'font-size': iconFontSize}">{{icon}}</i>
     </div>
-</div> -->
-
-
-<div #button
-     (mousedown)="onMouseDown()"
-     [ngClass]="{'disabled': isDisabled,
-                 'button-top': buttonType === ScrollbarButtonType.Top,
-                 
-                }">
-
-    
-        <div>
-            <i class="material-symbols-outlined" [ngStyle]="{'font-size': iconFontSize}">{{icon}}</i>
-        </div>
-    
 </div>

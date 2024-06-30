@@ -8,7 +8,7 @@
     width: calc(var(--thumb-width) - 2px);
     min-height: calc(var(--thumb-width) - 2px);
     
-    &:hover {
+    &:hover:not(.active) {
         .vertical-thumb-border {
             background: var(--scrollbar-vertical-thumb-border-hover-color);
         }
@@ -25,24 +25,25 @@
             background: var(--scrollbar-thumb-background-hover-color);
         }
     }
+}
 
 
-    &:active {
-        .vertical-thumb-border {
-            background: var(--scrollbar-vertical-thumb-border-active-color);
-        }
 
-        .horizontal-thumb-border {
-            background: var(--scrollbar-thumb-border-active-color);
-        }
+.active {
+    .vertical-thumb-border {
+        background: var(--scrollbar-vertical-thumb-border-active-color);
+    }
 
-        .vertical-thumb-background {
-            background: var(--scrollbar-vertical-thumb-background-active-color);
-        }
+    .horizontal-thumb-border {
+        background: var(--scrollbar-thumb-border-active-color);
+    }
 
-        .horizontal-thumb-background {
-            background: var(--scrollbar-thumb-background-active-color);
-        }
+    .vertical-thumb-background {
+        background: var(--scrollbar-vertical-thumb-background-active-color);
+    }
+
+    .horizontal-thumb-background {
+        background: var(--scrollbar-thumb-background-active-color);
     }
 }
 

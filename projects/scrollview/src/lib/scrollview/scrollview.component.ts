@@ -49,8 +49,6 @@ export class ScrollviewComponent {
   private scrollbarScrollSubscription: OutputRefSubscription[] = new Array(2);
   protected scrollbarProperties: ScrollbarProperties = new ScrollbarProperties();
 
-
-
   constructor() {
     effect(() => {
       this.setScrollbarsScrollSubscription();

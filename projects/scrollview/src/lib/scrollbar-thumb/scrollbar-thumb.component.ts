@@ -15,6 +15,7 @@ export class ScrollbarThumbComponent {
 
   // Private
   private thumbPos!: number;
+  protected active!: boolean;
   private thumbSize!: number;
   private buttonSize!: number;
   private scrollRatio!: number;
@@ -26,6 +27,7 @@ export class ScrollbarThumbComponent {
   private removeThumbScrollListener!: () => void;
   private removeThumbMouseUpListener!: () => void;
   private removeThumbMousedownListener!: () => void;
+  private removeContentElementFocusListener!: () => void;
   private thumb = viewChild<ElementRef<HTMLElement>>('thumb');
 
 
@@ -35,6 +37,7 @@ export class ScrollbarThumbComponent {
     this.setThumbWidth();
     this.setThumbScroll();
     this.setThumbBorderWidth();
+    this.setContentElementFocusListener();
   }
 
 
@@ -55,19 +58,27 @@ export class ScrollbarThumbComponent {
 
   private setThumbScroll(): void {
     this.removeThumbMousedownListener = this.renderer.listen(this.thumb()?.nativeElement, 'mousedown', (e: MouseEvent) => {
-      const thumbStartPos = this.getPosition();
-      const mouseGlobalPos = this.isVertical ? e.clientY : e.clientX;
-      const thumbGlobalPos = this.isVertical ? this.thumb()!.nativeElement.getBoundingClientRect().top : this.thumb()!.nativeElement.getBoundingClientRect().left;
-      const scrollOffset = mouseGlobalPos - thumbGlobalPos;
+      this.onMouseDown(e);
+    })
+  }
 
-      this.removeThumbScrollListener = this.renderer.listen('window', 'mousemove', (e: MouseEvent) => {
-        this.setPosition(thumbStartPos + (((this.isVertical ? e.clientY : e.clientX) - thumbGlobalPos) - scrollOffset));
-      })
 
-      this.removeThumbMouseUpListener = this.renderer.listen('window', 'mouseup', () => {
-        this.removeThumbMouseUpListener();
-        this.removeThumbScrollListener();
-      })
+
+  public onMouseDown(e: MouseEvent): void {
+    this.active = true;
+    const thumbStartPos = this.getPosition();
+    const mouseGlobalPos = this.isVertical ? e.clientY : e.clientX;
+    const thumbGlobalPos = this.isVertical ? this.thumb()!.nativeElement.getBoundingClientRect().top : this.thumb()!.nativeElement.getBoundingClientRect().left;
+    const scrollOffset = mouseGlobalPos - thumbGlobalPos;
+
+    this.removeThumbScrollListener = this.renderer.listen('window', 'mousemove', (e: MouseEvent) => {
+      this.setPosition(thumbStartPos + (((this.isVertical ? e.clientY : e.clientX) - thumbGlobalPos) - scrollOffset));
+    })
+
+    this.removeThumbMouseUpListener = this.renderer.listen('window', 'mouseup', () => {
+      this.active = false;
+      this.removeThumbMouseUpListener();
+      this.removeThumbScrollListener();
     })
   }
 
@@ -77,6 +88,37 @@ export class ScrollbarThumbComponent {
     this.scrollbar.thumbBorderWidthAssignedEvent.subscribe((borderWidth: string) => {
       this.borderWidth = borderWidth;
     })
+  }
+
+
+
+  private setContentElementFocusListener(): void {
+    this.removeContentElementFocusListener = this.renderer.listen('document', 'focusin', () => {
+      this.onContentElementFocus();
+    })
+  }
+
+
+
+  private onContentElementFocus(): void {
+    if (this.content.contains(document.activeElement)) {
+      this.content.parentElement!.scrollTop = 0;
+      this.content.parentElement!.scrollLeft = 0;
+
+      if (this.isVertical) {
+        const startPos = ((document.activeElement as HTMLElement).offsetTop - this.content.offsetHeight) + (document.activeElement as HTMLElement).offsetHeight;
+        const centerPos = (this.content.offsetHeight / 2) - ((document.activeElement as HTMLElement).offsetHeight / 2);
+        const offset = startPos + centerPos;
+        const scrollPosition = (offset * this.scrollRatio) + this.buttonSize;
+        this.setPosition(scrollPosition);
+      } else {
+        const startPos = ((document.activeElement as HTMLElement).offsetLeft - this.content.offsetWidth) + (document.activeElement as HTMLElement).offsetWidth;
+        const centerPos = (this.content.offsetWidth / 2) - ((document.activeElement as HTMLElement).offsetWidth / 2);
+        const offset = startPos + centerPos;
+        const scrollPosition = (offset * this.scrollRatio) + this.buttonSize;
+        this.setPosition(scrollPosition);
+      }
+    }
   }
 
 
@@ -137,5 +179,6 @@ export class ScrollbarThumbComponent {
 
   private ngOnDestroy(): void {
     if (this.removeThumbMousedownListener) this.removeThumbMousedownListener();
+    if (this.removeContentElementFocusListener) this.removeContentElementFocusListener();
   }
 }

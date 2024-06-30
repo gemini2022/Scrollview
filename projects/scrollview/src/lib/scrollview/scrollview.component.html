@@ -9,6 +9,6 @@
 
     <div #content class="scrollview-content-container" [style]="onOverflow()"><ng-content></ng-content></div>
     @if (verticalOverflow) {<div class="scrollview-vertical-scrollbar-container"><scrollbar isVertical></scrollbar></div>}
-    <!-- @if (horizontalOverflow) {<div class="scrollview-horizontal-scrollbar-container"><scrollbar></scrollbar></div>} -->
+    @if (horizontalOverflow) {<div class="scrollview-horizontal-scrollbar-container"><scrollbar></scrollbar></div>}
     @if (doubleOverflow) { <div class="double-overflow-corner"></div>}
 </div>
