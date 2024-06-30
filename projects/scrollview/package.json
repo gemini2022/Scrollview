@@ -8,5 +8,8 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
+  "publishConfig": {
+    "registry": "http://localhost:4873"
+  },
   "sideEffects": false
 }

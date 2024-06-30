@@ -34,10 +34,10 @@
 
 
 .double-overflow-corner {
-    width: 15px;
-    height: 15px;
+    width: var(--scrollbar-width-value);
+    height: var(--scrollbar-width-value);
     background: var(--double-overflow-corner-color);
     position: absolute;
-    left: calc(100% - 15px);
-    top: calc(100% - 15px);
+    left: calc(100% - var(--scrollbar-width-value));
+    top: calc(100% - var(--scrollbar-width-value));
 }
